@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6961ED1D29233864009A8A59 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6961ED1C29233864009A8A59 /* AVFoundation.framework */; };
 		FD043938274FADE300F91BCD /* LinkKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD043937274FADE300F91BCD /* LinkKit.xcframework */; };
 		FD04393A274FADFB00F91BCD /* AudioEngineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD043939274FADFB00F91BCD /* AudioEngineController.swift */; };
 		FD04393E274FAE0500F91BCD /* AudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = FD04393C274FAE0500F91BCD /* AudioEngine.m */; };
@@ -17,12 +18,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6961ED1C29233864009A8A59 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		FD043937274FADE300F91BCD /* LinkKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LinkKit.xcframework; path = ../../../LinkKit.xcframework; sourceTree = "<group>"; };
 		FD043939274FADFB00F91BCD /* AudioEngineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngineController.swift; sourceTree = "<group>"; };
 		FD04393B274FAE0400F91BCD /* LinkHut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinkHut-Bridging-Header.h"; sourceTree = "<group>"; };
 		FD04393C274FAE0500F91BCD /* AudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEngine.m; sourceTree = "<group>"; };
 		FD04393D274FAE0500F91BCD /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
-		FD554439274FAC6A00569236 /* LinkHut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkHut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD554439274FAC6A00569236 /* Blink Sync Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blink Sync Metronome.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD55443C274FAC6A00569236 /* LinkHutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHutApp.swift; sourceTree = "<group>"; };
 		FD55443E274FAC6A00569236 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD554440274FAC6B00569236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6961ED1D29233864009A8A59 /* AVFoundation.framework in Frameworks */,
 				FD043938274FADE300F91BCD /* LinkKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,18 +45,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6961ED1B29233864009A8A59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6961ED1C29233864009A8A59 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FD554430274FAC6A00569236 = {
 			isa = PBXGroup;
 			children = (
 				FD55443B274FAC6A00569236 /* LinkHut */,
 				FD55443A274FAC6A00569236 /* Products */,
+				6961ED1B29233864009A8A59 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		FD55443A274FAC6A00569236 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD554439274FAC6A00569236 /* LinkHut.app */,
+				FD554439274FAC6A00569236 /* Blink Sync Metronome.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,9 +90,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD554438274FAC6A00569236 /* LinkHut */ = {
+		FD554438274FAC6A00569236 /* Blink Sync Metronome */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD554447274FAC6B00569236 /* Build configuration list for PBXNativeTarget "LinkHut" */;
+			buildConfigurationList = FD554447274FAC6B00569236 /* Build configuration list for PBXNativeTarget "Blink Sync Metronome" */;
 			buildPhases = (
 				FD554435274FAC6A00569236 /* Sources */,
 				FD554436274FAC6A00569236 /* Frameworks */,
@@ -90,9 +102,9 @@
 			);
 			dependencies = (
 			);
-			name = LinkHut;
+			name = "Blink Sync Metronome";
 			productName = LinkHut;
-			productReference = FD554439274FAC6A00569236 /* LinkHut.app */;
+			productReference = FD554439274FAC6A00569236 /* Blink Sync Metronome.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +136,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD554438274FAC6A00569236 /* LinkHut */,
+				FD554438274FAC6A00569236 /* Blink Sync Metronome */,
 			);
 		};
 /* End PBXProject section */
@@ -282,16 +294,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = LINKHUT;
+				DEVELOPMENT_TEAM = GX5HBR5686;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LinkHut/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = metrowvib;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-lc++";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ableton.link.LinkHut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ableton.link.VisualClick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -312,16 +325,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = LINKHUT;
+				DEVELOPMENT_TEAM = GX5HBR5686;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LinkHut/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = metrowvib;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-lc++";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ableton.link.LinkHut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ableton.link.VisualClick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -343,7 +357,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD554447274FAC6B00569236 /* Build configuration list for PBXNativeTarget "LinkHut" */ = {
+		FD554447274FAC6B00569236 /* Build configuration list for PBXNativeTarget "Blink Sync Metronome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD554448274FAC6B00569236 /* Debug */,
