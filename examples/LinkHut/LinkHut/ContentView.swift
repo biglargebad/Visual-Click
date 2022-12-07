@@ -16,7 +16,7 @@ let generator = UINotificationFeedbackGenerator()
 private var switchBool = false
 private var switchBoolLight = false
 private var colorSwitchBool = false
-
+private var screenOff = false
 
 
 
@@ -204,6 +204,19 @@ struct VibrateButton: View {
     
 }
 
+struct ScreenBlinkButton: View {
+    @EnvironmentObject private var engine: AudioEngineController
+
+  var body: some View {
+    Button(
+      action: { screenOff = !screenOff },
+      label: { Image(screenOff ? "Screen_Off" : "Screen_On")
+      }
+    )
+  }
+    
+}
+
 struct FlashlightButton: View {
     @EnvironmentObject private var engine: AudioEngineController
 
@@ -228,36 +241,39 @@ struct Metronome: View {
             }
         }
     }
-    
     func rectColor(number: Int) -> Color
     {
         if !engine.isPlaying
         {
             return inactiveColor
         }
-        if engine.isPlaying
+        else
         {
-            if (vibrateBool)
+            if engine.isPlaying
             {
-                if engine.tempo > 109.0
+                if (vibrateBool)
                 {
-                    if isEven(number: engine.beatTime)
+                    if engine.tempo > 109.0
                     {
-                        vibrate()
+                        if isEven(number: engine.beatTime)
+                        {
+                            vibrate()
+                        }
+                    }
+                    else
+                    {
+                        switched(bool: isEven(number: engine.beatTime))
                     }
                 }
-                if engine.tempo <= 109.0
-                {
-                    switched(bool: isEven(number: engine.beatTime))
-                }
-            }
-            if (lightBool)
+                if (lightBool)
                 {
                     switchedLight(bool: isEven(number: engine.beatTime))
                 }
+            }
+            if screenOff {return inactiveColor}
             return colorSwitch(bool: isEven(number: engine.beatTime))
+            
         }
-        return inactiveColor
     }
 }
 
@@ -290,14 +306,17 @@ struct TransportButton: View {
 
 struct WideControls: View {
   var body: some View {
-    HStack {
-      TransportButton()
-      Spacer()
-      TempoControl()
-        Spacer ()
-      VibrateButton()
-      FlashlightButton()
-    }
+      VStack {
+          ScreenBlinkButton()
+          HStack {
+              TransportButton()
+              Spacer()
+              TempoControl()
+              Spacer ()
+              VibrateButton()
+              FlashlightButton()
+          }
+      }
   }
 }
 
@@ -307,10 +326,13 @@ struct HighControls: View {
       TempoControl()
     }
     Spacer()
-      HStack {
-          FlashlightButton()
-          TransportButton()
-          VibrateButton()
+      VStack {
+          ScreenBlinkButton()
+          HStack {
+              FlashlightButton()
+              TransportButton()
+              VibrateButton()
+          }
       }
       
   }
