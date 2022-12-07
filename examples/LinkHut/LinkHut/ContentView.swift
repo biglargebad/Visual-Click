@@ -11,14 +11,39 @@ private var activeDownbeatColor = Color(red: 1, green: 1, blue: 1)
 private let countInColor = Color(red: 0.7, green: 0.7, blue: 0.7)
 private let inactiveColor = Color(red: 0, green: 0, blue: 0)
 private var vibrateBool = false
+private var lightBool = false
 let generator = UINotificationFeedbackGenerator()
 private var switchBool = false
+
+
+
+func toggleTorch(on: Bool) {
+    guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
+
+    if device.hasTorch {
+        do {
+            try device.lockForConfiguration()
+
+            if on == true {
+                device.torchMode = .on
+            } else {
+                device.torchMode = .off
+            }
+
+            device.unlockForConfiguration()
+        } catch {
+            print("Torch could not be used")
+        }
+    } else {
+        print("Torch is not available")
+    }
+}
 
 
 func isEven (number: Double) -> Bool
 {
     var number2 = 1
-    number2 = Int(number + 0.3)
+    number2 = Int(number)
     if number2 % 2 == 0 {
       return true
     } else {
@@ -31,8 +56,18 @@ func switched (bool: Bool)
     if (switchBool != bool)
     {
         switchBool = bool
-        let impactLight = UIImpactFeedbackGenerator(style: .rigid)
+        let impactLight = UIImpactFeedbackGenerator(style: .heavy)
     impactLight.impactOccurred()
+    }
+}
+
+func switchedLight (bool: Bool)
+{
+    if (switchBool != bool)
+    {
+        switchBool = bool
+        toggleTorch(on:true)
+        toggleTorch(on:false)
     }
 }
 
@@ -155,6 +190,19 @@ struct VibrateButton: View {
     
 }
 
+struct FlashlightButton: View {
+    @EnvironmentObject private var engine: AudioEngineController
+
+  var body: some View {
+    Button(
+      action: { lightBool = !lightBool },
+      label: { Image(lightBool ? "Flashlight_On" : "Flashlight_Off")
+      }
+    )
+  }
+    
+}
+
 
 struct Metronome: View {
     @EnvironmentObject private var engine: AudioEngineController
@@ -179,19 +227,20 @@ struct Metronome: View {
     func rectColor(number: Int) -> Color {
         //let current =
         //Int(engine.quantum + engine.beatTime) % Int(engine.quantum) == number
-        if !engine.isPlaying /*|| !current*/ || (engine.beatTime - Double(Int(engine.beatTime)) > 0.1){
-           // oneVibe = true
+        if !engine.isPlaying /*|| !current*/ || (engine.beatTime - Double(Int(engine.beatTime)) < 0.8){
             return inactiveColor
         }
-        //if engine.beatTime >= 0
         if engine.isPlaying
         {
+            if (vibrateBool)     {
+                switched(bool: isEven(number: engine.beatTime))
+            }
+            if (lightBool) {
+                switchedLight(bool: isEven(number: engine.beatTime))
+                
+            }
             if number == 0
-            //(engine.beatTime - Double(Int(engine.beatTime)) == 0.0))
             {
-                if (vibrateBool)     {
-                    switched(bool: isEven(number: engine.beatTime))
-                }
                 return activeDownbeatColor
             }
             return inactiveColor
@@ -235,7 +284,7 @@ struct WideControls: View {
       TransportButton()
       Spacer()
       TempoControl()
-        VibrateButton()
+      VibrateButton()
     }
   }
 }
@@ -249,6 +298,7 @@ struct HighControls: View {
     }
     Spacer()
       HStack {
+          FlashlightButton()
           TransportButton()
           VibrateButton()
       }
@@ -290,6 +340,7 @@ struct ContentView: View {
         ZStack {
             Metronome()
                 .ignoresSafeArea()
+
             VStack {
                 HStack {
                     Spacer()
