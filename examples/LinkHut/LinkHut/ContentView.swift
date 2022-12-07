@@ -14,6 +14,10 @@ private var vibrateBool = false
 private var lightBool = false
 let generator = UINotificationFeedbackGenerator()
 private var switchBool = false
+private var switchBoolLight = false
+private var colorSwitchBool = false
+
+
 
 
 
@@ -51,26 +55,53 @@ func isEven (number: Double) -> Bool
     }
 }
 
+func isOdd (number: Double) -> Bool
+{
+    var number2 = 1
+    number2 = Int(number)
+    if number2 % 2 == 1 {
+      return true
+    } else {
+      return false
+    }
+}
+
+func vibrate()
+{
+    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+}
+
 func switched (bool: Bool)
 {
     if (switchBool != bool)
     {
         switchBool = bool
-        let impactLight = UIImpactFeedbackGenerator(style: .heavy)
-    impactLight.impactOccurred()
+        vibrate()
     }
+    
 }
 
+    
 func switchedLight (bool: Bool)
 {
-    if (switchBool != bool)
+    if (switchBoolLight != bool)
     {
-        switchBool = bool
-        toggleTorch(on:true)
+        switchBoolLight = bool
+        for _ in 1...20 {toggleTorch(on:true)}
         toggleTorch(on:false)
     }
 }
 
+
+func colorSwitch (bool: Bool) -> Color
+{
+    if (colorSwitchBool != bool)
+    {
+        colorSwitchBool = bool
+        return activeDownbeatColor
+    }
+    return inactiveColor
+}
 
 // Wrapper to show the UIKit ABLLinkSettingsViewController in SwiftUI
 struct LinkSettingsViewController: UIViewControllerRepresentable {
@@ -146,7 +177,6 @@ struct TempoControl: View {
 
   var body: some View {
     VStack {
-     // Text("Tempo")
       HStack {
         ImageButton(action: { engine.tempo = max(20, engine.tempo - 1) }, imageName: "Minus")
               .foregroundColor(Color.white)
@@ -158,22 +188,6 @@ struct TempoControl: View {
     }.padding().font(.system(size: fontSize))
   }
 }
-
-/*
-struct QuantumControl: View {
-  @EnvironmentObject private var engine: AudioEngineController
-
-  var body: some View {
-    VStack {
-      Text("Quantum")
-      HStack {
-        ImageButton(action: { engine.quantum = max(1, engine.quantum - 1) }, imageName: "Minus")
-        Text(String(format: "%.0f", engine.quantum))
-        ImageButton(action: { engine.quantum = engine.quantum + 1 }, imageName: "Plus")
-      }
-    }.padding().font(.system(size: fontSize))
-  }
-}*/
 
 
 
@@ -210,43 +224,41 @@ struct Metronome: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack(spacing: 0) {
-                ForEach(0..<Int(engine.quantum), id: \.self) { number in
                     Rectangle().fill(rectColor(number: 0))
-                }
-                // .padding(0)
             }
-            // .padding(0)
-            /*HStack {
-             Text(String(format: "Beat Time: %.2f", engine.beatTime)).font(.system(size: fontSize))
-             .padding()
-             Spacer()
-             }*/
         }
     }
     
-    func rectColor(number: Int) -> Color {
-        //let current =
-        //Int(engine.quantum + engine.beatTime) % Int(engine.quantum) == number
-        if !engine.isPlaying /*|| !current*/ || (engine.beatTime - Double(Int(engine.beatTime)) < 0.8){
+    func rectColor(number: Int) -> Color
+    {
+        if !engine.isPlaying
+        {
             return inactiveColor
         }
         if engine.isPlaying
         {
-            if (vibrateBool)     {
-                switched(bool: isEven(number: engine.beatTime))
-            }
-            if (lightBool) {
-                switchedLight(bool: isEven(number: engine.beatTime))
-                
-            }
-            if number == 0
+            if (vibrateBool)
             {
-                return activeDownbeatColor
+                if engine.tempo > 109.0
+                {
+                    if isEven(number: engine.beatTime)
+                    {
+                        vibrate()
+                    }
+                }
+                if engine.tempo <= 109.0
+                {
+                    switched(bool: isEven(number: engine.beatTime))
+                }
             }
-            return inactiveColor
+            if (lightBool)
+                {
+                    switchedLight(bool: isEven(number: engine.beatTime))
+                }
+            return colorSwitch(bool: isEven(number: engine.beatTime))
         }
-    return countInColor
-}
+        return inactiveColor
+    }
 }
 
 
@@ -279,12 +291,12 @@ struct TransportButton: View {
 struct WideControls: View {
   var body: some View {
     HStack {
-     // QuantumControl()
-     // Spacer()
       TransportButton()
       Spacer()
       TempoControl()
+        Spacer ()
       VibrateButton()
+      FlashlightButton()
     }
   }
 }
@@ -292,8 +304,6 @@ struct WideControls: View {
 struct HighControls: View {
   var body: some View {
     HStack {
-     // QuantumControl()
-     // Spacer()
       TempoControl()
     }
     Spacer()
@@ -346,12 +356,8 @@ struct ContentView: View {
                     Spacer()
                     LinkSettingsButton().padding()
                 }
-                // Spacer()
-                //Metronome()
                 Controls()
             }
-            //Metronome()
-            //.ignoresSafeArea()
         }
     }
 }
