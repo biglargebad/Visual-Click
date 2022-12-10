@@ -199,6 +199,7 @@ struct VibrateButton: View {
       action: { vibrateBool = !vibrateBool },
       label: { Image(vibrateBool ? "Vibrate_On" : "Vibrate_Off")
       }
+        
     )
   }
     
