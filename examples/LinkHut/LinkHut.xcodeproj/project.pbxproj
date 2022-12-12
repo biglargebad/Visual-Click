@@ -19,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		6961ED1C29233864009A8A59 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		6977CABA2947B39800E756BE /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/UserMessagingPlatform.xcframework"; sourceTree = "<group>"; };
 		FD043937274FADE300F91BCD /* LinkKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LinkKit.xcframework; path = ../../../LinkKit.xcframework; sourceTree = "<group>"; };
 		FD043939274FADFB00F91BCD /* AudioEngineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngineController.swift; sourceTree = "<group>"; };
 		FD04393B274FAE0400F91BCD /* LinkHut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinkHut-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		6961ED1B29233864009A8A59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6977CABA2947B39800E756BE /* UserMessagingPlatform.xcframework */,
 				6961ED1C29233864009A8A59 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
