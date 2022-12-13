@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6961ED1D29233864009A8A59 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6961ED1C29233864009A8A59 /* AVFoundation.framework */; };
+		697C6AFD2947D70A00774C9C /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6977CABA2947B39800E756BE /* UserMessagingPlatform.xcframework */; };
+		697C6B042947D70A00774C9C /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697C6AFE2947D70A00774C9C /* GoogleAppMeasurement.xcframework */; };
+		697C6B052947D70A00774C9C /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697C6AFF2947D70A00774C9C /* GoogleUtilities.xcframework */; };
+		697C6B062947D70A00774C9C /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697C6B002947D70A00774C9C /* nanopb.xcframework */; };
+		697C6B072947D70A00774C9C /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697C6B012947D70A00774C9C /* PromisesObjC.xcframework */; };
+		697C6B082947D70A00774C9C /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697C6B022947D70A00774C9C /* GoogleMobileAds.xcframework */; };
+		697C6B092947D70A00774C9C /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 697C6B032947D70A00774C9C /* GoogleAppMeasurementIdentitySupport.xcframework */; };
 		FD043938274FADE300F91BCD /* LinkKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD043937274FADE300F91BCD /* LinkKit.xcframework */; };
 		FD04393A274FADFB00F91BCD /* AudioEngineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD043939274FADFB00F91BCD /* AudioEngineController.swift */; };
 		FD04393E274FAE0500F91BCD /* AudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = FD04393C274FAE0500F91BCD /* AudioEngine.m */; };
@@ -20,6 +27,12 @@
 /* Begin PBXFileReference section */
 		6961ED1C29233864009A8A59 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		6977CABA2947B39800E756BE /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/UserMessagingPlatform.xcframework"; sourceTree = "<group>"; };
+		697C6AFE2947D70A00774C9C /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/GoogleAppMeasurement.xcframework"; sourceTree = "<group>"; };
+		697C6AFF2947D70A00774C9C /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/GoogleUtilities.xcframework"; sourceTree = "<group>"; };
+		697C6B002947D70A00774C9C /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/nanopb.xcframework"; sourceTree = "<group>"; };
+		697C6B012947D70A00774C9C /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/PromisesObjC.xcframework"; sourceTree = "<group>"; };
+		697C6B022947D70A00774C9C /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
+		697C6B032947D70A00774C9C /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = "../../../SDKs/GoogleMobileAdsSdkiOS-9.13.0/GoogleAppMeasurementIdentitySupport.xcframework"; sourceTree = "<group>"; };
 		FD043937274FADE300F91BCD /* LinkKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LinkKit.xcframework; path = ../../../LinkKit.xcframework; sourceTree = "<group>"; };
 		FD043939274FADFB00F91BCD /* AudioEngineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngineController.swift; sourceTree = "<group>"; };
 		FD04393B274FAE0400F91BCD /* LinkHut-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinkHut-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -38,6 +51,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				697C6B042947D70A00774C9C /* GoogleAppMeasurement.xcframework in Frameworks */,
+				697C6B052947D70A00774C9C /* GoogleUtilities.xcframework in Frameworks */,
+				697C6B062947D70A00774C9C /* nanopb.xcframework in Frameworks */,
+				697C6B072947D70A00774C9C /* PromisesObjC.xcframework in Frameworks */,
+				697C6B082947D70A00774C9C /* GoogleMobileAds.xcframework in Frameworks */,
+				697C6B092947D70A00774C9C /* GoogleAppMeasurementIdentitySupport.xcframework in Frameworks */,
+				697C6AFD2947D70A00774C9C /* UserMessagingPlatform.xcframework in Frameworks */,
 				6961ED1D29233864009A8A59 /* AVFoundation.framework in Frameworks */,
 				FD043938274FADE300F91BCD /* LinkKit.xcframework in Frameworks */,
 			);
@@ -49,6 +69,12 @@
 		6961ED1B29233864009A8A59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				697C6AFE2947D70A00774C9C /* GoogleAppMeasurement.xcframework */,
+				697C6B032947D70A00774C9C /* GoogleAppMeasurementIdentitySupport.xcframework */,
+				697C6B022947D70A00774C9C /* GoogleMobileAds.xcframework */,
+				697C6AFF2947D70A00774C9C /* GoogleUtilities.xcframework */,
+				697C6B002947D70A00774C9C /* nanopb.xcframework */,
+				697C6B012947D70A00774C9C /* PromisesObjC.xcframework */,
 				6977CABA2947B39800E756BE /* UserMessagingPlatform.xcframework */,
 				6961ED1C29233864009A8A59 /* AVFoundation.framework */,
 			);
@@ -305,7 +331,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "-lc++";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ableton.link.VisualClick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -336,7 +365,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "-lc++";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ableton.link.VisualClick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

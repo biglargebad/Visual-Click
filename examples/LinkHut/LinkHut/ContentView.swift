@@ -3,8 +3,8 @@
 import SwiftUI
 import AVFoundation
 import AudioToolbox.AudioServices
-//import GoogleMobileAds
-//import UIKit
+import GoogleMobileAds
+import UIKit
 
 private let fontSize = 30.0
 private let imageSize = 35.0
@@ -19,74 +19,46 @@ private var switchBool = false
 private var switchBoolLight = false
 private var colorSwitchBool = false
 private var screenOff = false
-/*
-struct BannerAd: UIViewRepresentable {
 
-    var unitID: String
+private struct BannerVC: UIViewControllerRepresentable  {
 
-    func makeCoordinator() -> Coordinator {
-        // For Implementing Delegates..
-        return Coordinator()
+    func makeUIViewController(context: Context) -> UIViewController {
+        let view = GADBannerView(adSize: GADAdSizeBanner)
+
+        let viewController = UIViewController()
+        view.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        view.rootViewController = viewController
+        viewController.view.addSubview(view)
+        viewController.view.frame = CGRect(origin: .zero, size: GADAdSizeBanner.size)
+        view.load(GADRequest())
+
+        return viewController
     }
 
-    func makeUIView(context: Context) -> GADBannerView{
-        let adView = GADBannerView(adSize: GADAdSizeBanner)
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}
 
-        adView.adUnitID = unitID
-        adView.rootViewController = UIApplication.shared.getRootViewController()
-
-        adView.load(GADRequest())
-
-        return adView
-    }
-
-    func updateUIView(_ uiView: GADBannerView, context: Context) {
-
-    }
-
-    class Coordinator: NSObject, GADBannerViewDelegate {
-        func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-            print("bannerViewDidReceiveAd")
-        }
-
-        func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
-            print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-        }
-
-        func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
-            print("bannerViewDidRecordImpression")
-        }
-
-        func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
-            print("bannerViewWillPresentScreen")
-        }
-
-        func bannerViewWillDismissScreen(_ bannerView: GADBannerView) {
-            print("bannerViewWillDIsmissScreen")
-        }
-
-        func bannerViewDidDismissScreen(_ bannerView: GADBannerView) {
-            print("bannerViewDidDismissScreen")
+struct Banner:View{
+    var body: some View{
+        HStack{
+            Spacer()
+            BannerVC().frame(width: 320, height: 50, alignment: .center)
+            Spacer()
         }
     }
 }
 
-// Extending Application to get RootView..
-extension UIApplication {
-    func getRootViewController() -> UIViewController {
-
-        guard let screen = self.connectedScenes.first as? UIWindowScene else {
-            return .init()
-        }
-
-        guard let root = screen.windows.first?.rootViewController else {
-            return .init()
-        }
-
-        return root
+struct Banner_Previews: PreviewProvider {
+    static var previews: some View {
+        Banner()
     }
 }
-*/
+
+
+
+
+
+
 
 func toggleTorch(on: Bool) {
     guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
@@ -437,18 +409,19 @@ struct Controls: View {
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
+       ZStack {
             Metronome()
                 .ignoresSafeArea()
-
             VStack {
                 HStack {
                     Spacer()
                     LinkSettingsButton().padding()
                 }
                 Controls()
+                Banner()
             }
         }
+
     }
 }
  
