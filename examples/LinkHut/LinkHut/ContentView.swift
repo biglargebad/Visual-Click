@@ -26,7 +26,7 @@ private struct BannerVC: UIViewControllerRepresentable  {
         let view = GADBannerView(adSize: GADAdSizeBanner)
 
         let viewController = UIViewController()
-        view.adUnitID = "ca-app-pub-2251298211617908~4294479011"
+        view.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         view.rootViewController = viewController
         viewController.view.addSubview(view)
         viewController.view.frame = CGRect(origin: .zero, size: GADAdSizeBanner.size)
@@ -295,14 +295,14 @@ struct Metronome: View {
                 {
                     if engine.tempo > 109.0
                     {
-                        if isEven(number: engine.beatTime)
+                        if isEven(number: engine.beatTime + 0.1)
                         {
                             vibrate()
                         }
                     }
                     else
                     {
-                        switched(bool: isEven(number: engine.beatTime))
+                        switched(bool: isEven(number: engine.beatTime + 0.1))
                     }
                 }
                 if (lightBool)
